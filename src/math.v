@@ -35,14 +35,15 @@ module math #(
         8'h03: accum1 <= 0;
         8'h04: accum0 <= {accum0[BITS-1:8], data_in};
         8'h05: accum1 <= {accum1[BITS-1:8], data_in};
-        8'h06: accum0 <= accum0 + data_in;
-        8'h07: accum0 <= accum1 + data_in;
+        8'h06: accum0 <= accum0 + {{BITS-9{1'b0}}, data_in};
+        8'h07: accum0 <= accum1 + {{BITS-9{1'b0}}, data_in};
         8'h08: accum0 <= accum0 + accum1;
         8'h09: accum1 <= accum0 + accum1;
         8'h0A: accum0 <= accum0 << data_in;
         8'h0B: accum0 <= accum1 << data_in;
         8'h0C: accum0 <= accum0 >> data_in;
         8'h0D: accum0 <= accum1 >> data_in;
+        default: ;
       endcase
     end
   end
