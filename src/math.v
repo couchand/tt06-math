@@ -6,7 +6,7 @@
 `define default_netname none
 
 module math #(
-    parameter BITS = 128
+    parameter BITS = 64
 ) (
     input  wire       clk,
     input  wire       rst_n,
