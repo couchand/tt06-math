@@ -25,14 +25,15 @@ async def test_project(dut):
   dut._log.info("Test")
 
   dut.ui_in.value = 20
-  dut.uio_in.value = 4
+  dut.uio_in.value = 2
   await ClockCycles(dut.clk, 1)
 
   dut.ui_in.value = 30
-  dut.uio_in.value = 5
+  dut.uio_in.value = 3
   await ClockCycles(dut.clk, 1)
 
-  dut.uio_in.value = 8
-  await ClockCycles(dut.clk, 2)
+  dut.ui_in.value = 0
+  dut.uio_in.value = 0
+  await ClockCycles(dut.clk, 1)
 
   assert dut.uo_out.value == 50
